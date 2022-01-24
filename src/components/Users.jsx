@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomInput from './CustomInput';
 
 const styles = {
   marginTop: '20px',
@@ -14,6 +15,7 @@ const Users = () => {
   const DATA_USERS = `https://jsonplaceholder.typicode.com/users`;
   const [users, setUsers] = React.useState([]);
   const [count, setCount] = React.useState(2);
+  const [value, setValue] = React.useState('');
 
   React.useEffect(() => {
     const getData = async () => {
@@ -24,15 +26,14 @@ const Users = () => {
     getData();
   }, [DATA_USERS]);
 
-  const filterUsers = users.slice(0, count);
-
-  const increment = () => {
-    setCount((prev) => prev + 2);
-  };
+  const filterUsers = users
+    .slice(0, count)
+    .filter((u) => u.name.toLowerCase().includes(value.toLowerCase()));
 
   return (
     <>
       <h1>Users component</h1>
+      <CustomInput setValue={setValue} value={value} />
       {filterUsers.map((u) => (
         <div key={u.id}>
           <span>{u.id}) </span>
@@ -41,7 +42,7 @@ const Users = () => {
         </div>
       ))}
       {users.length > count ? (
-        <button style={styles} onClick={increment}>
+        <button style={styles} onClick={() => setCount((prev) => prev + 2)}>
           Show more
         </button>
       ) : (
