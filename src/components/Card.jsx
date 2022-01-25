@@ -7,18 +7,13 @@ const styles = {
   flexDirection: 'column',
 };
 
-const Card = ({ title, text, onClickHandler, show }) => {
+const Card = ({ title, text }) => {
   const [visible, setVisible] = React.useState(false);
 
-  const clickHandler = (e) => {
-    setVisible(show);
-    onClickHandler(e);
-  };
-
   return (
-    <div style={styles}>
-      <h1 onClick={(e) => clickHandler(e)}>{title}</h1>
-      {show ? <p>{text}</p> : null}
+    <div onClick={() => setVisible((p) => !p)} style={styles}>
+      <h1>{title}</h1>
+      {visible ? <p>{text}</p> : null}
     </div>
   );
 };

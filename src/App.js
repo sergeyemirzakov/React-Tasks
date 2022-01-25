@@ -29,14 +29,7 @@ function App() {
         {/* <Users />
         <Paragraph paragraph={paragraph} max={70} /> */}
         {textArticle.map((c) => (
-          <Card
-            onClickHandler={(e) => onClickHandler(e)}
-            key={c.id}
-            text={c.text}
-            title={c.title}
-            id={c.id}
-            show={show}
-          />
+          <Card key={c.id} text={c.text} title={c.title} id={c.id} />
         ))}
       </div>
     </div>
