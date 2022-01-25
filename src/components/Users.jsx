@@ -30,10 +30,16 @@ const Users = () => {
     .slice(0, count)
     .filter((u) => u.name.toLowerCase().includes(value.toLowerCase()));
 
+  const increment = () => {
+    setCount((prev) => prev + 2);
+  };
+
   return (
     <>
       <h1>Users component</h1>
+
       <CustomInput setValue={setValue} value={value} />
+
       {filterUsers.map((u) => (
         <div key={u.id}>
           <span>{u.id}) </span>
@@ -41,8 +47,9 @@ const Users = () => {
           <span>{u.email}</span>
         </div>
       ))}
+
       {users.length > count ? (
-        <button style={styles} onClick={() => setCount((prev) => prev + 2)}>
+        <button style={styles} onClick={increment}>
           Show more
         </button>
       ) : (
