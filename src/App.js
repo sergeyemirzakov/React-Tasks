@@ -7,6 +7,8 @@ import Users from './components/Users';
 import Paragraph from './components/Paragraph';
 import Card from './components/Card';
 import PicCat from './components/Pictures';
+import Rating from './components/Rating';
+import CustomProgressBar from './components/CustomProgressBar';
 
 const paragraph = `
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -29,6 +31,8 @@ function App() {
       <PicCat />
       <div className="container">
         <h1>Hello, React✋</h1>
+        <Rating />
+        <CustomProgressBar min={0} max={100} />
         <Users />
         <Paragraph paragraph={paragraph} max={70} />
         {textArticle.map((c) => (
