@@ -1,0 +1,8 @@
+.active {
+  transform-origin: top;
+  transition: transform 0.26s ease;
+}
+
+.hidden {
+  transform: scaleY(0);
+}

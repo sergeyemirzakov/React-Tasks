@@ -1,4 +1,5 @@
 import React from 'react';
+import './Card.css';
 
 const styles = {
   marginTop: '20px',
@@ -7,13 +8,11 @@ const styles = {
   flexDirection: 'column',
 };
 
-const Card = ({ title, text }) => {
-  const [visible, setVisible] = React.useState(false);
-
+const Card = ({ title, text, id, show, setClass }) => {
   return (
-    <div onClick={() => setVisible((p) => !p)} style={styles}>
+    <div onClick={setClass} style={styles}>
       <h1>{title}</h1>
-      {visible ? <p>{text}</p> : null}
+      {<p className={show === id ? 'active' : 'hidden'}>{text}</p>}
     </div>
   );
 };
